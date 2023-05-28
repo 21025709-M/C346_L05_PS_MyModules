@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.strictmode.IntentReceiverLeakedViolation;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class modInfo extends AppCompatActivity {
 
     TextView title, modCode, modName, acadYear, sem, modCredit, venue;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class modInfo extends AppCompatActivity {
         sem = findViewById(R.id.textViewSem);
         modCredit = findViewById(R.id.textViewModCredit);
         venue = findViewById(R.id.textViewVenue);
+        back = findViewById(R.id.buttonBack);
 
         Intent intentReceived = getIntent();
 
@@ -38,6 +42,13 @@ public class modInfo extends AppCompatActivity {
         sem.setText("Semester: " + Semester);
         modCredit.setText("Module Credit: " + ModuleCredit);
         venue.setText("Venue: " + Venue);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 }
